@@ -15,7 +15,7 @@ Forked from [asiimath/asciimathml](https://github.com/asciimath/asciimathml).
 ### nodejs
 
 ```js
-const { am2tex } = require('@zmx0142857/asciimath')
+const { am2tex } = require('asciimath-js')
 console.log(am2tex('[a,b;c,d]'))
 ```
 
