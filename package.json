@@ -1,0 +1,20 @@
+{
+  "name": "asciimath",
+  "version": "1.0.0",
+  "description": "forked from https://github.com/mathjax/asciimathml",
+  "main": "asciimath.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zmx0142857/asciimathml.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zmx0142857/asciimathml/issues"
+  },
+  "homepage": "https://github.com/zmx0142857/asciimathml#readme"
+}
