@@ -17,6 +17,7 @@ Forked from [asiimath/asciimathml](https://github.com/asciimath/asciimathml).
 ```js
 const { am2tex } = require('asciimath-js')
 console.log(am2tex('[a,b;c,d]'))
+// \displaystyle {\left[\begin{matrix} a& b\\ c& d\\\end{matrix}\right]}
 ```
 
 ### browser
@@ -25,6 +26,7 @@ console.log(am2tex('[a,b;c,d]'))
 
 ```html
 <!DOCTYPE html>
+<html>
 <head>
   <meta charset="utf-8"/>
   <title>test asciimath</title>
@@ -35,7 +37,7 @@ Here's some math: `x = (-b +- sqrt(b^2-4ac))/(2a)`.
 
 <script>
 // the configuration is optional and can be omitted
-const asciimath = {
+var asciimath = {
   env: undefined,       // default to browser
   katexpath: 'katex.min.js',// use katex as fallback if no MathML.
   katex: undefined,     // true=always, false=never, undefined=auto
@@ -55,9 +57,10 @@ const asciimath = {
   texstr: '',           // last return value of am2tex
 
   // this function is called when asciimath is ready
-  onload: () => console.log('asciimath is loaded'),
+  onload: () => asciimath.render(document.body),
 }
 </script>
-<script src="asciimath.js"></script>
+<script src="node_modules/asciimath-js/asciimath.js"></script>
 </body>
+</html>
 ```

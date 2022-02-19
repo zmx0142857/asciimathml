@@ -1,6 +1,6 @@
 {
   "name": "asciimath-js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "forked from https://github.com/mathjax/asciimathml",
   "main": "asciimath.js",
   "scripts": {
@@ -10,9 +10,9 @@
     "type": "git",
     "url": "git+https://github.com/zmx0142857/asciimathml.git"
   },
-  "keywords": [],
+  "keywords": ["asciimath", "latex", "katex"],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/zmx0142857/asciimathml/issues"
   },
