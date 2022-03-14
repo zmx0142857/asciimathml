@@ -64,3 +64,48 @@ var asciimath = {
 </body>
 </html>
 ```
+
+### am2tex cli
+
+`test.am`
+
+    上例表明,
+    取定 `|a| < 1` 时, 函数
+    ```
+    w = varphi_a(z) = (a - z)/(1 - bar a z)
+    ```
+    将单位圆盘 `B(0, 1)` 映到自身的子集中.
+    上式解得 `z = (a-w)/(1 - bar a w)`, 这说明 `varphi_a` 是自身的反函数.
+    既然可以反解出 `z`, 这说明 `varphi_a` 是单射;
+    另一方面, 对任意 `w in B(0, 1)`, 可以找到原像 `z in B(0, 1)`,
+    说明它是满射. 总之 `varphi_a` 是 `B(0, 1)` 到自身的双射.
+    特别地, `varphi_a(0) = a`, `varphi_a(a) = 0`.
+    又, `varphi_a` 将单位圆周映到单位圆周.
+    下文将提到, `D` 上全纯的双射称为 `D` 上的全纯自同构, 它们的集合记为
+    `"Aut"(D)`.
+
+```sh
+$ npx asciimath-js am2tex test
+```
+
+`test.tex`
+
+    \documentclass{ctexart}
+    \usepackage{amsmath}
+    \begin{document}
+    上例表明,
+    取定 $\textstyle {\left| a\right|}< 1$ 时, 函数
+    \[
+    \displaystyle  w=\varphi_{a}{\left( z\right)}=\frac{a- z}{1-\overline{a} z}
+    \]
+    将单位圆盘 $\textstyle  B{\left( 0, 1\right)}$ 映到自身的子集中.
+    上式解得 $\textstyle  z=\frac{a- w}{1-\overline{a} w}$, 这说明 $\textstyle \varphi_{a}$ 是自身的反函数.
+    既然可以反解出 $\textstyle  z$, 这说明 $\textstyle \varphi_{a}$ 是单射;
+    另一方面, 对任意 $\textstyle  w\in B{\left( 0, 1\right)}$, 可以找到原像 $\textstyle  z\in B{\left( 0, 1\right)}$,
+    说明它是满射. 总之 $\textstyle \varphi_{a}$ 是 $\textstyle  B{\left( 0, 1\right)}$ 到自身的双射.
+    特别地, $\textstyle \varphi_{a}{\left( 0\right)}= a$, $\textstyle \varphi_{a}{\left( a\right)}= 0$.
+    又, $\textstyle \varphi_{a}$ 将单位圆周映到单位圆周.
+    下文将提到, $\textstyle  D$ 上全纯的双射称为 $\textstyle  D$ 上的全纯自同构, 它们的集合记为
+    $\textstyle \text{Aut}{\left( D\right)}$.
+
+    \end{document}
