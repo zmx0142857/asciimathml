@@ -84,8 +84,14 @@ var asciimath = {
     下文将提到, `D` 上全纯的双射称为 `D` 上的全纯自同构, 它们的集合记为
     `"Aut"(D)`.
 
+Try the following command:
 ```sh
-$ npx asciimath-js am2tex test
+$ npm i asciimath-js && npx am2tex test
+```
+
+or, simply type:
+```sh
+$ npx asciimath-js test
 ```
 
 `test.tex`
