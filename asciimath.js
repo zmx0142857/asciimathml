@@ -341,6 +341,7 @@ const symbols = [
 {input:'overset',tag:'mover',output:'stackrel',ttype:BINARY},
 {input:'underset',tag:'munder',output:'stackrel',ttype:BINARY},
 {input:'hat',tag:'mover',output:'\u005E',ttype:UNARY,acc:true},
+{input:'widehat',tag:'mover',output:'\u005E',ttype:UNARY,acc:true},
 {input:'arc',tag:'mover',output:'\u23DC',tex:'stackrel{\\frown}',ttype:UNARY,acc:true},
 {input:'bar',tag:'mover',output:'\u00AF',tex:'overline',ttype:UNARY,acc:true},
 {input:'vec',tag:'mover',output:'\u2192',ttype:UNARY,acc:true},
@@ -669,7 +670,7 @@ const yieldsTex = {
     return node[0] === '\\' || sym.tag === 'mo' ? node : ' ' + node
   },
   leftBracket (sym, res) {
-    if (res.startsWith('\\right')) {
+    if (/^\\right[.)\]]/.test(res)) {
       res = res[6] === '.' ? res.slice(7) : res.slice(6)
       return sym.invisible ? b(res) : b(parse.texCtrl(sym) + res)
     } else {
@@ -705,13 +706,13 @@ const yieldsTex = {
   },
   binary (sym, res, res2, rewind) {
     if (sym.input === 'color')
-      return `{\\color{${parse.arg(rewind)}}${res2}}`
+      return `{\\color${b(parse.arg(rewind))}${res2}}`
     if (sym.input === 'root')
       return `\\sqrt[${res}]{${res2}}`
     if (sym.output === 'stackrel')
-      return parse.texSymbol(sym) + `{${res}}{${res2}}`
+      return parse.texSymbol(sym) + b(res) + b(res2)
     if (sym.input === 'frac')
-      return `\\frac{${res}}{${res2}}`
+      return '\\frac' + b(res) + b(res2)
   },
   infixOutput (sym) {
     return sym.output
@@ -735,8 +736,8 @@ const yieldsTex = {
     //let rBraces = res.split('}').length
     //node += '^' + (lBraces === 2 && rBraces === 2 ? res : b(res))
     if (sym0.input === '==') {
-      return subFirst ? `\\xlongequal[${res}]{${res2}}`
-        : `\\xlongequal[${res2}]{${res}}`
+      return subFirst ? `\\xlongequal[${res}]` + b(res2)
+        : `\\xlongequal[${res2}]` + b(res)
     } else {
       return node + sym1.input + b(res) + sym2.input + b(res2)
     }

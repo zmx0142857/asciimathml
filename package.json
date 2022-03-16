@@ -1,6 +1,6 @@
 {
   "name": "asciimath-js",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "forked from https://github.com/mathjax/asciimathml",
   "main": "asciimath.js",
   "bin": {
