@@ -814,6 +814,7 @@ const yieldsTex = {
     const str = frag.join('')
     let len = str.length
     let depth = 0
+    let i = 0
     for (i = 0; i < len; ++i) {
       if (isLeftBrace.test(str[i]))
         ++depth
@@ -884,7 +885,7 @@ Each terminal symbol is translated into a corresponding mathml node.*/
 const parse = {
   yields,
   init (str) {
-    for (d of AM.define) str = str.replace(d[0], d[1])
+    for (const d of AM.define) str = str.replace(d[0], d[1])
     AM.nestingDepth = 0
     AM.str = str.trimLeft()
     AM.begin = 0
