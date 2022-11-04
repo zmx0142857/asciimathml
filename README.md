@@ -1,8 +1,8 @@
 # asciimath
 
-Forked from [asiimath/asciimathml](https://github.com/asciimath/asciimathml).
+Forked from [asciimath/asciimathml](https://github.com/asciimath/asciimathml).
 
-- reference: https://zmx0142857.gitee.io/note/#math
+- reference: https://zmx0142857.github.io/note/#math
 - original homepage: http://asciimath.org/
 
 ## quick start

@@ -1,13 +1,14 @@
 {
   "name": "asciimath-js",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "forked from https://github.com/mathjax/asciimathml",
   "main": "asciimath.js",
   "bin": {
     "am2tex": "./bin/am2tex.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "uglifyjs asciimath.js -c -m > asciimath.min.js",
+    "am2tex": "node ./bin/am2tex.js"
   },
   "repository": {
     "type": "git",
