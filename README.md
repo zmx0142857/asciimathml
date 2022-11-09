@@ -128,3 +128,14 @@ $ npx asciimath-js test
     $\textstyle \text{Aut}{\left( D\right)}$.
 
     \end{document}
+
+### multiline formula
+
+To enable multiline alignment for asciimath, in am2tex, we convert each
+`\n\n` to a linebreak, and wrap the formula group in LaTeX's `aligned`
+environment; this feature is not available in am2mathml, though.
+```
+f: RR & -> S^1
+
+x & |-> "e"^(2pi"i"x)
+```

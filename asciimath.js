@@ -1157,15 +1157,27 @@ function am2mathml(amstr) {
 
 let parseMath = am2mathml
 
+// in am2tex, we convert \n\n to a linebreak to enable multiline alignment
+// for asciimath; this feature is not available in am2mathml, though
+function lineHelper (src, fn) {
+  const convertLine = s => s.includes('&') ? fn(s) : '& ' + fn(s)
+  return '\\begin{aligned}'
+    + src.split(/\n{2,}/g).map(convertLine).join(' \\\\ ')
+    + '\\end{aligned}'
+}
+
 // amstr -> texstr
 function am2tex(amstr, displaystyle = AM.displaystyle) {
   parse.yields = yieldsTex
+  if (displaystyle && /\n\n/.test(amstr)) {
+    return AM.texstr = lineHelper(amstr, am2tex)
+  }
   parse.init(amstr)
   const args = []
   if (AM.color) args.push('\\' + AM.color)
   args.push(displaystyle ? '\\displaystyle ' : '\\textstyle ')
+  args.push(parse.expr(false).replace(/(\$|%)/g, '\\$1'))
   return AM.texstr = args.join('')
-    + parse.expr(false).replace(/(\$|%)/g, '\\$1')
 }
 
 function parseMathTex(amstr) {
