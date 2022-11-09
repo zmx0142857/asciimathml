@@ -9,8 +9,10 @@ Forked from [asciimath/asciimathml](https://github.com/asciimath/asciimathml).
 
 ### API
 
-- `am2tex(str)`: convert asciimath string to tex string
+- `am2tex(str, displaystyle=AM.displaystyle)`: convert asciimath string to tex string
+- `am2mathml(str)`: convert asciimath to mathml
 - `render(element)`: render math to HTML element
+- `init()`: incase AM didn't init, call it manually
 
 ### nodejs
 
@@ -63,6 +65,17 @@ var asciimath = {
 <script src="node_modules/asciimath-js/asciimath.js"></script>
 </body>
 </html>
+```
+
+Alternatively, you may use `am2tex` to convert asciimath notation to tex:
+```html
+<script src="asciimath.js"></script>
+<script>
+window.addEventListener('load', () => {
+  const tex = window.asciimath.am2tex('[1, 2, 3; 4, 5, 6]')
+  console.log(tex)
+})
+</script>
 ```
 
 ### am2tex cli

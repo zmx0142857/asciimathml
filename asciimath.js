@@ -281,7 +281,7 @@ const symbols = [
 {input:'grad',tag:'mo',output:'\u2207',tex:'nabla',ttype:CONST},
 {input:'+-',tag:'mo',output:'\u00B1',tex:'pm',ttype:CONST},
 {input:'O/',tag:'mo',output:'\u2205',tex:'varnothing',ttype:CONST},
-{input:'oo',tag:'mo',output:'\u221E',tex:'infty',ttype:CONST},
+{input:'oo',tag:'mn',output:'\u221E',tex:'infty',ttype:CONST}, // treat oo as number
 {input:'aleph',tag:'mo',output:'\u2135',ttype:CONST},
 {input:'...',tag:'mo',output:'...',tex:'ldots',ttype:CONST},
 {input:':.',tag:'mo',output:'\u2234',tex:'therefore',ttype:CONST},
@@ -1394,6 +1394,7 @@ if (typeof document === 'undefined') {
 AM.render = render
 AM.am2tex = am2tex
 AM.am2mathml = am2mathml
+AM.init = init // incase AM didn't init, call it manually
 })();
 
 if (typeof module !== 'undefined')
