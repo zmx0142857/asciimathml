@@ -1,5 +1,7 @@
 # asciimath
 
+Convert asciimath markup to LaTeX & MathML.
+
 Forked from [asciimath/asciimathml](https://github.com/asciimath/asciimathml).
 
 - reference: https://zmx0142857.github.io/note/#math
@@ -43,9 +45,6 @@ var asciimath = {
   env: undefined,       // default to browser
   katexpath: 'katex.min.js',// use katex as fallback if no MathML.
   katex: undefined,     // true=always, false=never, undefined=auto
-
-  fixepsi: true,        // false to return to legacy epsi/varepsi mapping
-  fixphi: true,         // false to return to legacy phi/varphi mapping
 
   delim1: '`',          // asciimath delimiter character 1
   displaystyle: true,   // put limits above and below large operators
