@@ -114,7 +114,7 @@ const AM = asciimath = {
     // derivative short hand
     // dd f x => ("d"f)/("d"x)
     // dd^2 f x => ("d"^2 f)/("d"x)
-    [/dd(\^\S*)?\s+(\S+)\s+(\S+)/g, (match, $1, $2, $3) => {
+    [/\bdd(\^\S*)?\s+(\S+)\s+(\S+)/g, (match, $1, $2, $3) => {
       if (!$1) $1 = ''
       return `("d"${$1} ${$2})/("d" ${$3}${$1})`
     }],
@@ -123,7 +123,7 @@ const AM = asciimath = {
     // pp^3 f (x y^2) => (del^3 f)/(del x del y^2)
     // partial f x => del f x
     // TODO: pp 和 dd 只是正则替换, 词法上没有保证; 使用时需要手动用空格分隔参数
-    [/pp(\^\S*)?\s+(\S+)\s+(\([^)]*\)|\S+)/g, (match, $1, $2, $3) => {
+    [/\bpp(\^\S*)?\s+(\S+)\s+(\([^)]*\)|\S+)/g, (match, $1, $2, $3) => {
       if (!$1) $1 = ''
       if ($3[0] === '(') $3 = $3.slice(1,-1).split(/\s+/).join(' del ')
       return `(del${$1} ${$2})/(del ${$3})`
@@ -261,10 +261,10 @@ const symbols = [
 {input:'|==',tag:'mo',output:'\u22A8',tex:'models',ttype:CONST},
 
 // grouping brackets
-{input:'(',tag:'mo',output:'(',ttype:LEFTBRACKET},
-{input:')',tag:'mo',output:')',ttype:RIGHTBRACKET},
-{input:'[',tag:'mo',output:'[',ttype:LEFTBRACKET},
-{input:']',tag:'mo',output:']',ttype:RIGHTBRACKET},
+{input:'(',tag:'mo',output:'(',ttype:LEFTBRACKET,nobackslash:true},
+{input:')',tag:'mo',output:')',ttype:RIGHTBRACKET,nobackslash:true},
+{input:'[',tag:'mo',output:'[',ttype:LEFTBRACKET,nobackslash:true},
+{input:']',tag:'mo',output:']',ttype:RIGHTBRACKET,nobackslash:true},
 {input:'{',tag:'mo',output:'{',tex:'lbrace',ttype:LEFTBRACKET},
 {input:'}',tag:'mo',output:'}',tex:'rbrace',ttype:RIGHTBRACKET},
 {input:'|',tag:'mo',output:'|',ttype:LEFTRIGHT},
@@ -1191,8 +1191,10 @@ function parseMathTex(amstr) {
     anno.textContent = '$' + anno.textContent + '$'; // add tex delimiter for user selection
   } catch (e) {
     node.className = 'katex-error'
-    node.innerText = 'KaTeX parse error'
-    console.error(amstr, e)
+    node.innerText = texstr
+    node.title = e.message
+    console.log(`am: ${amstr}\ntex: ${texstr}`)
+    console.error(e)
   }
   return node
 }

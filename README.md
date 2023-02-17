@@ -1,5 +1,7 @@
 # asciimath
 
+> NOTE: maybe this is the last version of asciimath-js, to use a modern parser with full test suite and better development experience, we recommend [asciimath-parser](https://npmjs.com/package/asciimath-parser).
+
 Convert asciimath markup to LaTeX & MathML.
 
 Forked from [asciimath/asciimathml](https://github.com/asciimath/asciimathml).
