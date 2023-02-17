@@ -1,6 +1,6 @@
 {
   "name": "asciimath-js",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "forked from https://github.com/mathjax/asciimathml",
   "main": "asciimath.js",
   "bin": {
@@ -14,11 +14,18 @@
     "type": "git",
     "url": "git+https://github.com/zmx0142857/asciimathml.git"
   },
-  "keywords": ["asciimath", "latex", "katex"],
+  "keywords": [
+    "asciimath",
+    "latex",
+    "katex"
+  ],
   "author": "",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/zmx0142857/asciimathml/issues"
   },
-  "homepage": "https://github.com/zmx0142857/asciimathml#readme"
+  "homepage": "https://github.com/zmx0142857/asciimathml#readme",
+  "devDependencies": {
+    "uglify-js": "^3.17.4"
+  }
 }
